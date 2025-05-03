@@ -51,11 +51,17 @@
                 BoarsToKill_OnLoad();
             </OnLoad>
             <OnEvent>
-                BoarsToKill_OnEvent();
+                BoarsToKill_OnEvent(event);
             </OnEvent>
             <OnUpdate>
                 BoarsToKill_OnUpdate(arg1);
             </OnUpdate>
+            <OnMouseDown>
+                if arg1 == "LeftButton" then this:StartMoving() end
+            </OnMouseDown>
+            <OnMouseUp>
+                this:StopMovingOrSizing(); BoarsToKill_SavePosition();
+            </OnMouseUp>
         </Scripts>
     </Frame>
 </Ui> 

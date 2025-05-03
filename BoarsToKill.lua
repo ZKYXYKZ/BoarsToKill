@@ -208,12 +208,14 @@ function BoarsToKill_UpdateDisplay()
         numLines = 3 -- boarLine, xpLine, message rouge
         lineHeight = 15
     end
-    -- Padding bas synchronisé pour un rendu cohérent
-    local verticalPaddingBottom = 6 -- même valeur avant et après le premier kill
+    -- Padding bas harmonisé
+    local verticalPaddingBottom = 12 -- padding bas unique et équilibré
     local height = lineHeight + numLines * lineHeight + verticalPaddingBottom
+    -- Hauteur fixe, seule la largeur s'adapte
+    local fixedHeight = 110
     local width = math.max(180, maxWidth + 30)
     frame:SetWidth(width)
-    frame:SetHeight(height)
+    frame:SetHeight(fixedHeight)
 
     -- Centre verticalement le texte
     text:ClearAllPoints()
@@ -235,14 +237,14 @@ end
 
 -- Fonction utilitaire pour détecter le sort/passif 'Boaring Adventure' dans le spellbook
 function HasBoaringAdventureSpell()
-    local i = 1
-    while true do
-        local spellName = GetSpellName(i, "spell")
-        if not spellName then break end
-        if spellName == "Boaring Adventure" then
-            return true
+    for tab=1, GetNumSpellTabs() do
+        local _, _, offset, numSpells = GetSpellTabInfo(tab)
+        for i=1, numSpells do
+            local spellName = GetSpellName(offset + i, "spell")
+            if spellName == "Boaring Adventure" then
+                return true
+            end
         end
-        i = i + 1
     end
     return false
 end
@@ -251,10 +253,12 @@ end
 function BoarsToKill_CheckBuffAndInit()
     if HasBoaringAdventureSpell() then
         DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Boaring Adventure detected, launching BoarsToKill.|r")
+        DEFAULT_CHAT_FRAME:AddMessage("[BoarsToKill] Boaring Adventure detected, addon loaded.")
         BoarsToKillFrame:Show()
         BoarsToKill_Active = true
     else
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Boaring Adventure not detected, BoarsToKill is not needed.|r")
+        DEFAULT_CHAT_FRAME:AddMessage("[BoarsToKill] Boaring Adventure not detected, addon not loaded.")
         BoarsToKillFrame:Hide()
         BoarsToKill_Active = false
     end
@@ -262,6 +266,7 @@ end
 
 -- Hook sur l'initialisation
 function BoarsToKill_OnLoad()
+    BoarsToKill_RestorePosition()
     BoarsToKill_CheckBuffAndInit()
     -- Restauration des variables sauvegardées
     if BoarsToKillDB.lastXP then lastXP = BoarsToKillDB.lastXP end
@@ -312,4 +317,16 @@ BoarsToKillFrameInit:SetScript("OnEvent", function(self, event)
         if BoarsToKillDB.killCount == nil then BoarsToKillDB.killCount = 0 end
         -- On peut aussi restaurer ici d'autres valeurs si besoin
     end
-end) 
+end)
+
+function BoarsToKill_SavePosition()
+    local point, _, _, x, y = BoarsToKillFrame:GetPoint()
+    BoarsToKillDB.pos = {point=point, x=x, y=y}
+end
+
+function BoarsToKill_RestorePosition()
+    if BoarsToKillDB.pos then
+        BoarsToKillFrame:ClearAllPoints()
+        BoarsToKillFrame:SetPoint(BoarsToKillDB.pos.point, UIParent, BoarsToKillDB.pos.x, BoarsToKillDB.pos.y)
+    end
+end 

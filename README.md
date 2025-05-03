@@ -12,7 +12,8 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 - Displays your current XP
 - Dynamic estimated time to level up (based on your real kill pace)
 - Number of boars killed this session
-- Total number of boars killed (persistent)
+- Total number of boars killed (persistent, saved between sessions)
+- Draggable window (position saved between sessions)
 - Multilingual support (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Modern, color-coded, and auto-resizing UI
 - Data is saved between sessions (/reload, relog)
@@ -43,7 +44,7 @@ The addon will be automatically updated whenever a new version is pushed to this
 ![BoarsToKill Example 2](screenshots/boarstokill_2.png)
 
 ### Credits
-- Addon by ZKYXYKZ & Ludo
+- Addon by ZKYXYKZ
 - Inspired by the "Boaring Adventure" meme
 - Thanks to the TurtleWoW community
 
@@ -59,7 +60,8 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 - Affiche votre XP actuelle
 - Temps estimé dynamique pour le niveau suivant (basé sur votre rythme réel)
 - Nombre de sangliers tués pendant la session
-- Total de sangliers tués (persistant)
+- Total de sangliers tués (persistant, sauvegardé entre les sessions)
+- Fenêtre déplaçable (position sauvegardée entre les sessions)
 - Support multilingue (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Interface moderne, colorée et auto-ajustable
 - Données sauvegardées entre les sessions (/reload, reconnexion)
@@ -90,6 +92,6 @@ L'addon sera automatiquement mis à jour à chaque nouvelle version publiée sur
 ![BoarsToKill Exemple 2](screenshots/boarstokill_2.png)
 
 ### Crédits
-- Addon par ZKYXYKZ & Ludo
+- Addon par ZKYXYKZ
 - Inspiré par le meme "Boaring Adventure"
 - Merci à la communauté TurtleWoW
