@@ -9,11 +9,12 @@ local timeSinceLastUpdate = 0
 local lastKillTime = nil
 local firstKillTime = nil
 local killCount = 0
+local BoarsToKill_Active = false
+
+-- Initialisation de la variable globale pour SavedVariables (jamais local, jamais redéfinie)
+if not BoarsToKillDB then BoarsToKillDB = {} end
 
 -- SavedVariables management
-if BoarsToKillDB == nil then
-    BoarsToKillDB = {}
-end
 if BoarsToKillDB.totalBoarsKilled == nil then
     BoarsToKillDB.totalBoarsKilled = 0
 end
@@ -30,11 +31,9 @@ if BoarsToKillDB.killCount == nil then
     BoarsToKillDB.killCount = 0
 end
 
--- Variables de session
-local firstKillTime = BoarsToKillDB.firstKillTime
-local killCount = BoarsToKillDB.killCount
-
--- Variable locale pour le nombre de sangliers tués dans la session
+-- Variables de session (non sauvegardées)
+local firstKillTime = BoarsToKillDB.firstKillTime or nil
+local killCount = BoarsToKillDB.killCount or 0
 local sessionBoarsKilled = 0
 
 -- Table de traductions
@@ -181,9 +180,13 @@ function BoarsToKill_UpdateDisplay()
     timeText:SetShadowColor(0,0,0,1)
     timeText:SetShadowOffset(1,-1)
     lastXP = currentXP
-    -- Sauvegarde à chaque update
+    -- On ne sauvegarde que les vraies données persistantes
     BoarsToKillDB.lastXP = lastXP
     BoarsToKillDB.lastXPChange = lastXPChange
+    BoarsToKillDB.totalBoarsKilled = BoarsToKillDB.totalBoarsKilled or 0
+    BoarsToKillDB.firstKillTime = firstKillTime
+    BoarsToKillDB.killCount = killCount
+    -- sessionBoarsKilled reste local
     -- Mesure la largeur réelle de chaque ligne
     local maxWidth = text:GetStringWidth()
     if timeText:GetStringWidth() > maxWidth then
@@ -205,7 +208,9 @@ function BoarsToKill_UpdateDisplay()
         numLines = 3 -- boarLine, xpLine, message rouge
         lineHeight = 15
     end
-    local height = lineHeight + numLines * lineHeight
+    -- Padding bas synchronisé pour un rendu cohérent
+    local verticalPaddingBottom = 6 -- même valeur avant et après le premier kill
+    local height = lineHeight + numLines * lineHeight + verticalPaddingBottom
     local width = math.max(180, maxWidth + 30)
     frame:SetWidth(width)
     frame:SetHeight(height)
@@ -228,18 +233,50 @@ function BoarsToKill_OnEvent()
     end
 end
 
--- Initialisation
+-- Fonction utilitaire pour détecter le sort/passif 'Boaring Adventure' dans le spellbook
+function HasBoaringAdventureSpell()
+    local i = 1
+    while true do
+        local spellName = GetSpellName(i, "spell")
+        if not spellName then break end
+        if spellName == "Boaring Adventure" then
+            return true
+        end
+        i = i + 1
+    end
+    return false
+end
+
+-- Activation/désactivation de l'addon selon le sort/passif
+function BoarsToKill_CheckBuffAndInit()
+    if HasBoaringAdventureSpell() then
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Boaring Adventure detected, launching BoarsToKill.|r")
+        BoarsToKillFrame:Show()
+        BoarsToKill_Active = true
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Boaring Adventure not detected, BoarsToKill is not needed.|r")
+        BoarsToKillFrame:Hide()
+        BoarsToKill_Active = false
+    end
+end
+
+-- Hook sur l'initialisation
 function BoarsToKill_OnLoad()
+    BoarsToKill_CheckBuffAndInit()
     -- Restauration des variables sauvegardées
     if BoarsToKillDB.lastXP then lastXP = BoarsToKillDB.lastXP end
     if BoarsToKillDB.lastXPChange then lastXPChange = BoarsToKillDB.lastXPChange end
     if BoarsToKillDB.firstKillTime then firstKillTime = BoarsToKillDB.firstKillTime end
     if BoarsToKillDB.killCount then killCount = BoarsToKillDB.killCount end
     sessionBoarsKilled = 0 -- reset session à chaque /reload ou déco
-    BoarsToKill_UpdateDisplay()
+    if BoarsToKill_Active then
+        BoarsToKill_UpdateDisplay()
+    end
 end
 
+-- OnUpdate ne fait rien si l'addon est inactif
 function BoarsToKill_OnUpdate(elapsed)
+    if not BoarsToKill_Active then return end
     local elapsed = elapsed or 0.1
     timeSinceLastUpdate = timeSinceLastUpdate + elapsed
     if timeSinceLastUpdate >= updateInterval then
@@ -259,4 +296,20 @@ SlashCmdList["BOARSTOKILL"] = function(msg)
     else
         DEFAULT_CHAT_FRAME:AddMessage("[BoarsToKill] Commands : /boarsleft debug")
     end
-end 
+end
+
+-- Frame pour gérer les événements
+local BoarsToKillFrameInit = CreateFrame("Frame")
+BoarsToKillFrameInit:RegisterEvent("VARIABLES_LOADED")
+
+BoarsToKillFrameInit:SetScript("OnEvent", function(self, event)
+    if event == "VARIABLES_LOADED" then
+        if not BoarsToKillDB then BoarsToKillDB = {} end
+        if BoarsToKillDB.totalBoarsKilled == nil then BoarsToKillDB.totalBoarsKilled = 0 end
+        if BoarsToKillDB.lastXP == nil then BoarsToKillDB.lastXP = 0 end
+        if BoarsToKillDB.lastXPChange == nil then BoarsToKillDB.lastXPChange = 0 end
+        if BoarsToKillDB.firstKillTime == nil then BoarsToKillDB.firstKillTime = nil end
+        if BoarsToKillDB.killCount == nil then BoarsToKillDB.killCount = 0 end
+        -- On peut aussi restaurer ici d'autres valeurs si besoin
+    end
+end) 

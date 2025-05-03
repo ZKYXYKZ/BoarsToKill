@@ -31,6 +31,26 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 - Inspired by the "Boaring Adventure" meme
 - Thanks to the TurtleWoW community
 
+### Installation via le Launcher TurtleWoW
+
+**FR** :
+1. Ouvre le Launcher TurtleWoW
+2. Va dans l'onglet "Addons"
+3. Clique sur "Add new addon"
+4. Mets le lien du dépôt GitHub : https://github.com/ZKYXYKZ/BoarsToKill.git
+5. Clique sur "Install"
+
+L'addon sera automatiquement mis à jour à chaque nouvelle version publiée sur ce dépôt.
+
+**EN** :
+1. Open the TurtleWoW Launcher
+2. Go to the "Addons" tab
+3. Click on "Add new addon"
+4. Paste the GitHub repo link: https://github.com/ZKYXYKZ/BoarsToKill.git
+5. Click "Install"
+
+The addon will be automatically updated whenever a new version is pushed to this repository.
+
 ---
 
 ## Français
@@ -61,3 +81,23 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 - Addon par ZKYXYKZ
 - Inspiré par le meme "Boaring Adventure"
 - Merci à la communauté TurtleWoW
+
+### Installation via le Launcher TurtleWoW
+
+**FR** :
+1. Ouvre le Launcher TurtleWoW
+2. Va dans l'onglet "Addons"
+3. Clique sur "Add new addon"
+4. Mets le lien du dépôt GitHub : https://github.com/ZKYXYKZ/BoarsToKill.git
+5. Clique sur "Install"
+
+L'addon sera automatiquement mis à jour à chaque nouvelle version publiée sur ce dépôt.
+
+**EN** :
+1. Open the TurtleWoW Launcher
+2. Go to the "Addons" tab
+3. Click on "Add new addon"
+4. Paste the GitHub repo link: https://github.com/ZKYXYKZ/BoarsToKill.git
+5. Click "Install"
+
+The addon will be automatically updated whenever a new version is pushed to this repository.

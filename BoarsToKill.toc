@@ -3,6 +3,7 @@
 ## Notes: Displays the number of boars left to kill to level up (for the Boaring Adventure challenge on TurtleWoW)
 ## Author: ZKYXYKZ
 ## Version: 1.0
+## SavedVariablesPerCharacter: BoarsToKillDB
 
 BoarsToKill.lua
 BoarsToKill.xml 
