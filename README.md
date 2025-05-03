@@ -27,7 +27,7 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 ![BoarsToKill Example 2](screenshots/boarstokill_2.png)
 
 ### Credits
-- Addon by ZKYXYKZ & Ludo
+- Addon by ZKYXYKZ
 - Inspired by the "Boaring Adventure" meme
 - Thanks to the TurtleWoW community
 
@@ -58,6 +58,6 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 ![BoarsToKill Exemple 2](screenshots/boarstokill_2.png)
 
 ### Crédits
-- Addon par ZKYXYKZ & Ludo
+- Addon par ZKYXYKZ
 - Inspiré par le meme "Boaring Adventure"
 - Merci à la communauté TurtleWoW
