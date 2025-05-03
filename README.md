@@ -17,7 +17,6 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 - Multilingual support (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Modern, color-coded, and auto-resizing UI
 - Data is saved between sessions (/reload, relog)
-- Slash command: `/boarsleft debug` for debug info
 - Auto-activation only if the "Boaring Adventure" challenge is detected
 
 ### Installation
@@ -34,10 +33,6 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 5. Click "Install"
 
 The addon will be automatically updated whenever a new version is pushed to this repository.
-
-### Usage
-- The addon activates automatically if your character has the "Boaring Adventure" challenge.
-- Use `/boarsleft debug` in chat to display debug info.
 
 ### Screenshots
 ![BoarsToKill Example 1](https://i.imgur.com/J84aYTg.png)
@@ -64,7 +59,6 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 - Support multilingue (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Interface moderne, colorée et auto-ajustable
 - Données sauvegardées entre les sessions (/reload, reconnexion)
-- Commande slash : `/boarsleft debug` pour infos debug
 - Activation automatique uniquement si le challenge "Boaring Adventure" est détecté
 
 ### Installation
@@ -81,10 +75,6 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 5. Cliquez sur "Install"
 
 L'addon sera automatiquement mis à jour à chaque nouvelle version publiée sur ce dépôt.
-
-### Utilisation
-- L'addon s'active automatiquement si votre personnage possède le challenge "Boaring Adventure".
-- Utilisez `/boarsleft debug` dans le chat pour afficher des infos de debug.
 
 ### Captures d'écran
 ![BoarsToKill Exemple 1](https://i.imgur.com/J84aYTg.png)
