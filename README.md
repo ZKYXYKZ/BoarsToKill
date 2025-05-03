@@ -40,8 +40,7 @@ The addon will be automatically updated whenever a new version is pushed to this
 - Use `/boarsleft debug` in chat to display debug info.
 
 ### Screenshots
-![BoarsToKill Example 1](screenshots/boarstokill_1.png)
-![BoarsToKill Example 2](screenshots/boarstokill_2.png)
+![BoarsToKill Example 1](https://imgur.com/a/P7dX2Py)
 
 ### Credits
 - Addon by ZKYXYKZ
@@ -88,7 +87,7 @@ L'addon sera automatiquement mis à jour à chaque nouvelle version publiée sur
 - Utilisez `/boarsleft debug` dans le chat pour afficher des infos de debug.
 
 ### Captures d'écran
-![BoarsToKill Exemple 1](screenshots/boarstokill_1.png)
+![BoarsToKill Exemple 1](https://imgur.com/a/P7dX2Py)
 ![BoarsToKill Exemple 2](screenshots/boarstokill_2.png)
 
 ### Crédits
