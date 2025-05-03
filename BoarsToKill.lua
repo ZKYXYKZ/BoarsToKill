@@ -252,22 +252,28 @@ end
 -- Activation/désactivation de l'addon selon le sort/passif
 function BoarsToKill_CheckBuffAndInit()
     if HasBoaringAdventureSpell() then
-        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Boaring Adventure detected, launching BoarsToKill.|r")
-        DEFAULT_CHAT_FRAME:AddMessage("[BoarsToKill] Boaring Adventure detected, addon loaded.")
         BoarsToKillFrame:Show()
         BoarsToKill_Active = true
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Boaring Adventure detected, launching BoarsToKill.|r")
     else
-        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Boaring Adventure not detected, BoarsToKill is not needed.|r")
-        DEFAULT_CHAT_FRAME:AddMessage("[BoarsToKill] Boaring Adventure not detected, addon not loaded.")
         BoarsToKillFrame:Hide()
         BoarsToKill_Active = false
+        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Boaring Adventure not detected, BoarsToKill is not needed.|r")
     end
 end
 
--- Hook sur l'initialisation
+-- Frame pour détecter le challenge à la connexion via SPELLS_CHANGED
+local BoarsToKill_SpellDetectFrame = CreateFrame("Frame")
+BoarsToKill_SpellDetectFrame:RegisterEvent("SPELLS_CHANGED")
+BoarsToKill_SpellDetectFrame:SetScript("OnEvent", function()
+    BoarsToKill_CheckBuffAndInit()
+    -- On désactive l'écoute après la première détection pour éviter les appels multiples
+    this:UnregisterEvent("SPELLS_CHANGED")
+end)
+
+-- OnLoad ne fait plus la détection, elle est faite par SPELLS_CHANGED
 function BoarsToKill_OnLoad()
     BoarsToKill_RestorePosition()
-    BoarsToKill_CheckBuffAndInit()
     -- Restauration des variables sauvegardées
     if BoarsToKillDB.lastXP then lastXP = BoarsToKillDB.lastXP end
     if BoarsToKillDB.lastXPChange then lastXPChange = BoarsToKillDB.lastXPChange end
