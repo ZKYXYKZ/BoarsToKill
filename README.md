@@ -16,7 +16,6 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 - Draggable window (position saved between sessions)
 - Multilingual support (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Modern, color-coded, and auto-resizing UI
-- Data is saved between sessions (/reload, relog)
 - Auto-activation only if the "Boaring Adventure" challenge is detected
 
 ### Installation
@@ -58,7 +57,6 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 - Fenêtre déplaçable (position sauvegardée entre les sessions)
 - Support multilingue (EN, FR, DE, ES, ZH, PT, IT, RU)
 - Interface moderne, colorée et auto-ajustable
-- Données sauvegardées entre les sessions (/reload, reconnexion)
 - Activation automatique uniquement si le challenge "Boaring Adventure" est détecté
 
 ### Installation
