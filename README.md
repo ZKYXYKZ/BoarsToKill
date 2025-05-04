@@ -14,7 +14,7 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 - Number of boars killed this session
 - Total number of boars killed (persistent, saved between sessions)
 - Draggable window (position saved between sessions)
-- Multilingual support (EN, FR, DE, ES, ZH, PT, IT, RU)
+- Multilingual support
 - Modern, color-coded, and auto-resizing UI
 - Simple setup: on first launch, a popup asks if this character is starting a Boaring Challenge
 - You can re-display the setup popup anytime with /btk setup
@@ -57,7 +57,7 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 - Nombre de sangliers tués pendant la session
 - Total de sangliers tués (persistant, sauvegardé entre les sessions)
 - Fenêtre déplaçable (position sauvegardée entre les sessions)
-- Support multilingue (EN, FR, DE, ES, ZH, PT, IT, RU)
+- Support multilingue
 - Interface moderne, colorée et auto-ajustable
 - Configuration simple : au premier lancement, une pop-up demande si ce personnage commence un Boaring Challenge
 - Vous pouvez réafficher la pop-up de configuration à tout moment avec /btk setup
