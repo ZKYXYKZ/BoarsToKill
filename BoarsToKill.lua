@@ -199,6 +199,7 @@ StaticPopupDialogs["BOARSTOKILL_SETUP"] = {
 
 function BoarsToKill_Init()
     if BoarsToKillDB.active == nil then
+        BoarsToKillFrame:Hide()
         StaticPopup_Show("BOARSTOKILL_SETUP")
     elseif BoarsToKillDB.active == true then
         BoarsToKillFrame:Show()
@@ -332,7 +333,6 @@ BoarsToKill_EnteringWorldFrame:SetScript("OnEvent", function()
     BoarsToKill_OnLoad()
 end)
 
--- Fallback anglais si une clé n'est pas définie
 local fallback = {
     BOARS = "Boars left : ",
     XP = "Current XP : ",
