@@ -22,7 +22,7 @@ BoarsToKill is a World of Warcraft 1.12.1 (Vanilla/TurtleWoW) addon that helps y
 ### Installation
 #### Classic (manual)
 1. Download or clone this repository.
-2. Copy the `BoarsToKill` folder into your `Interface/AddOns/` directory.
+2. Copy the `BoarsToKill` folder into your `Interface/AddOns/` directory (don't forget to remove "-main" in the folder name).
 3. Launch (or /reload) the game and enable the addon in the character selection screen.
 
 #### With TurtleWoW Launcher
@@ -65,7 +65,7 @@ BoarsToKill est un addon pour World of Warcraft 1.12.1 (Vanilla/TurtleWoW) qui v
 ### Installation
 #### Classique (manuelle)
 1. Téléchargez ou clonez ce dépôt.
-2. Copiez le dossier `BoarsToKill` dans votre répertoire `Interface/AddOns/`.
+2. Copiez le dossier `BoarsToKill` dans votre répertoire `Interface/AddOns/` (n'oubliez pas de retirer le "-main" dans le nom du dossier).
 3. Lancez (ou /reload) le jeu et activez l'addon à l'écran de sélection du personnage.
 
 #### Avec le Launcher TurtleWoW
